@@ -1,0 +1,10 @@
+956789489 / 10 - > 95678948.9 - >  95678948
+
+956789489 % 10 -> 9
+
+How can I create an abritary number of variables?
+(Maybe we don't need to that lol.)
+
+We should just take currentNumber and reverseNumber.
+As we take from currentNumber, we add to reverseNumber.
+That should get us there.
