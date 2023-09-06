@@ -1,38 +1,53 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <cctype>
 
 using namespace std;
 
-void findLongestLine(ifstream &inputFile, string &longestLine);
 void userPrompt(string &prompt);
 void getFileName(string &fileName);
 void openFile(ifstream &inputFile, string &fileName);
-void printLongestLine(string &longestLine);
-
+void countStuff(ifstream &inputFile);
 
 int main() {
     ifstream inputFile;
     string fileName;
     string prompt;
-    string longestLine;
     prompt = "Please enter a file name: ";
 
     userPrompt(prompt);
     getFileName(fileName);
     openFile(inputFile, fileName);
-    findLongestLine(inputFile, longestLine);
-    printLongestLine(longestLine);
+    countStuff(inputFile);
     return 0;
 }
 
-void findLongestLine(ifstream &inputFile, string &longestLine) {
+void countStuff(ifstream &inputFile) {
     string currentLine;
+    double lineCount = 0;
+    double wordCount = 0;
+    double letterCount = 0;
 
     while(inputFile) {
         getline(inputFile, currentLine);
-        if (currentLine.length() > longestLine.length()) {
-            longestLine = currentLine;
+        lineCount++;
+
+        for(int i = 0; i < currentLine.length(); i++ ) {
+            int endOfWordPos = 0;
+            if(!isspace(currentLine[i]) && isspace(currentLine[i+1])) {
+                letterCount++;
+            }
+
+            if(!isspace(currentLine[i]) && !isspace(currentLine[i+1])) {
+                wordCount++;
+                endOfWordPos = currentLine.find(' ', i+1);
+                if(endOfWordPos == -1) {
+                    endOfWordPos = currentLine.length();
+                }
+                letterCount += endOfWordPos - i;
+                i = endOfWordPos;
+            }
         }
     }
 }
@@ -57,7 +72,4 @@ void openFile(ifstream &inputFile, string &fileName) {
     }
 }
 
-void printLongestLine(string &longestLine) {
-    cout << "The longest line is:" << "\n";
-    cout << longestLine;
-}
+
