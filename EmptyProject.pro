@@ -130,7 +130,7 @@ SOURCES *= "" \
     src/stringhelper.cpp \
     src/ch-3-exercise-10.cpp \
     src/ch-3-exercise-11.cpp \
-    src/ch-4-exercise-4.cpp
+    src/ch-4-exercise-5.cpp
 SOURCES = ""
 
 # include various source .cpp files and header .h files in the build process
