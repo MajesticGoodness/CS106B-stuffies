@@ -1,1 +1,3 @@
 *.user
+src/.vscode
+src/build

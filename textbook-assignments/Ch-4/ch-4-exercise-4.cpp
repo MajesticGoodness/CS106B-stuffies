@@ -25,7 +25,6 @@ int main() {
     openFile(inputFile, fileName);
     countStuff(inputFile, lineCount, wordCount, letterCount);
     printStuff(lineCount, wordCount, letterCount);
-    
     return 0;
 }
 
