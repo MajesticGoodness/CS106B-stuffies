@@ -1,5 +1,5 @@
 *.user
 *.pro
 lib
-src/.vscode
+**/.vscode*
 src/build
